@@ -16,12 +16,14 @@ $title = "Welcome to my PHP page!";
 
 <body>
   <?php
-  $fruits = ["Doro", "Qolo", "Wello"];
-  $test = ["Mora, Amora"];
+  function sayHello()
+  {
+    return  "Hello, world!";
+  }
 
-  array_splice($fruits, 2,  0, $test);
+  $greeting = sayHello();
 
-  print_r($fruits)
+  echo $greeting
   ?>
 
 </body>
