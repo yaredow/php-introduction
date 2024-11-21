@@ -18,13 +18,14 @@ $title = "Welcome to my PHP page!";
   <?php
   $test = "yared";
   function calculator(int $num01, int $num02)
+
   {
     global $test;
     $result = $num01 + $num02;
-    return $test;
+    return $result;
   }
 
-  echo calculator(4, 6)
+  echo calculator(2, 5)
 
   ?>
 

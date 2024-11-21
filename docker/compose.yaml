@@ -3,13 +3,11 @@ services:
     build:
       context: ./
       dockerfile: Dockerfile
-    container_name: php-intro
+    container_name: php-app
     restart: always
     working_dir: /var/www/
     volumes:
       - ../src:/var/www
-    depends_on:
-      - db
 
   nginx:
     image: nginx:1.19-alpine
@@ -26,23 +24,23 @@ services:
     container_name: php-mysql
     restart: always
     environment:
-      MYSQL_ROOT_PASSWORD: rootpassword
-      MYSQL_DATABASE: mydatabase
-      MYSQL_USER: myuser
-      MYSQL_PASSWORD: mypassword
-    ports:
-      - 3306:3306
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: my_database
+      MYSQL_USER: my_user
+      MYSQL_PASSWORD: my_password
     volumes:
-      - db_data:/var/lib/mysql
+      - db-data:/var/lib/mysql
 
-  adminer:
-    image: adminer:latest
-    container_name: php-adminer
+  phpmyadmin:
+    image: phpmyadmin:latest
+    container_name: phpmyadmin
     restart: always
+    environment:
+      PMA_HOST: db
+      PMA_USER: my_user
+      PMA_PASSWORD: my_password
     ports:
-      - 8080:8080
-    depends_on:
-      - db
+      - 8080:80
 
 volumes:
-  db_data:
+  db-data:
