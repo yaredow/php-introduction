@@ -16,14 +16,16 @@ $title = "Welcome to my PHP page!";
 
 <body>
   <?php
-  function sayHello()
+  $test = "yared";
+  function calculator(int $num01, int $num02)
   {
-    return  "Hello, world!";
+    global $test;
+    $result = $num01 + $num02;
+    return $test;
   }
 
-  $greeting = sayHello();
+  echo calculator(4, 6)
 
-  echo $greeting
   ?>
 
 </body>
